@@ -27,7 +27,7 @@ const getFilePathsByGlob = (pattern) => {
 
 async function getTestSuitePaths() {
   const isPattern = settings.testSuitesPath.includes('*');
-  let fileList;
+  let fileList = [];
   if (isPattern) {
     console.log(`Using pattern ${settings.testSuitesPath} to find test suites`);
     fileList = await getFilePathsByGlob(settings.testSuitesPath);
