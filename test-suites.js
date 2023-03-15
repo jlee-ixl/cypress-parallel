@@ -35,11 +35,10 @@ async function getTestSuitePaths() {
     console.log(
       'DEPRECATED: using path is deprecated and will be removed, switch to glob pattern'
     );
-    const pathArr = settings.testSuitesPath.split(',');
-    for (const path in pathArr) {
+    settings.testSuitesPath.split(',').forEach(function(path) {
       fileList.push(getFilePathsByPath(path));
-    }
-    fileList = fileList.filter(function(file) {
+    })
+    fileList = fileList.flat().filter(function(file) {
       return file.match('\\.spec\\.(js|ts|jsx|tsx)$') !== null;
     });
   }
